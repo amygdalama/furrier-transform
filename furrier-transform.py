@@ -30,12 +30,18 @@ def time(num_samples, sampling_rate=SAMPLING_RATE):
     return (1.0/sampling_rate)*np.arange(num_samples)
 
 
+def amplitude(spectrogram):
+    pass
+
+
 def transform(lum_spectrogram):
     num_rows, num_cols = lum_spectrogram.shape
     num_samples = num_cols * SAMPLES_PER_WINDOW
-    t = time(num_samples)
-    f = np.apply_along_axis(frequency, 0, np.arange(num_cols)/float(num_cols))
-    print f
+    t = np.matrix(time(num_samples))
+    f = np.matrix(np.apply_along_axis(frequency, 0, np.arange(num_cols)/float(num_cols)))
+    f = f.transpose()
+    phi = np.matrix(np.random.rand(num_cols)*2*np.pi)
+    phi = phi.transpose()
 
 
 def main(image_filename):
