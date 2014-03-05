@@ -10,7 +10,7 @@ def step(x, y, nx=10):
     return X, Y
 
 
-def lerp(x, y, nx=326, nBlend=50):
+def lerp(x, y, nx=326, nBlend=15):
     X = np.linspace(x.min(), x.max(), len(x)*nx)
     Y = np.zeros(len(x)*nx)
     for i in xrange(0,len(x)):
@@ -25,3 +25,5 @@ def lerp(x, y, nx=326, nBlend=50):
         y_temp = y[i-1:i+1]
         Y[i*nx-nBlend:i*nx+nBlend+1] = np.interp(X_temp, x_temp, y_temp)
     return X, Y
+
+
