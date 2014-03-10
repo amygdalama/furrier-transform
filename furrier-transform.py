@@ -68,14 +68,15 @@ def generate_from_image(filename, random_phases=False):
 
 
 def generate_from_sound(filename):
-    samples_per_window = 128
+    # samples_per_window = 128
     # violin, sampling_rate, encoding = audiolab.oggread(filename)
     sampling_rate, violin = wavfile.read(filename)
     Pxx, freqs, bins, im = plt.specgram(violin, Fs=sampling_rate)
     num_rows, num_cols = Pxx.shape
+    samples_per_window = len(violin)/num_cols
+    print samples_per_window
     num_samples = num_cols * samples_per_window
     f = np.matrix(freqs).transpose()
-    print f
     t = np.matrix(np.linspace(bins[0], bins[-1], num_samples))
     a = amplitude(Pxx, samples_per_window)
     phi = np.random.random()*2*np.pi
