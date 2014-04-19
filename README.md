@@ -14,5 +14,8 @@ I really need to work on organizing this repository. In the meantime, pay most a
 * libsndfile
 * pil
 * scikits.audiolab
+* matplotlib
+* numpy
+* scipy
 
 
